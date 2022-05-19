@@ -8,10 +8,23 @@ end
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+
+  -- Telescope
+  use {
+   'nvim-telescope/telescope.nvim', 
+   requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- LSP
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'glepnir/lspsaga.nvim'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+  -- Treesitter
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
+  -- Themes
   use 'EdenEast/nightfox.nvim'
 
   if packer_bootstrap then

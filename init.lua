@@ -1,5 +1,6 @@
+require('user-settings')
 require('plugins')
 -- require('lsp')
-require('user-settings')
+require('telescope-settings')
 require('user-keymaps')
 require('themes')
