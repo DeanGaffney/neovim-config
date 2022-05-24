@@ -15,3 +15,7 @@ vim.api.nvim_set_keymap('n', '<Leader>gf', ':Telescope git_files<CR>', { noremap
 vim.api.nvim_set_keymap('n', '<Leader>gc', ':Telescope git_commits<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>gb', ':Telescope git_branches<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>gs', ':Telescope git_status<CR>', { noremap = true, silent = true })
+
+-- Quickfix list
+vim.api.nvim_set_keymap('n', 'q]', ':cnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'q[', ':cprev<CR>', { noremap = true, silent = true })
