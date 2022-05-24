@@ -38,7 +38,7 @@ require("null-ls").setup({
 		-- python
 		diagnostics.flake8,
 		formatting.black,
-		-- -- shell
+		-- shell
 		code_actions.shellcheck,
 		diagnostics.shellcheck,
 		formatting.shfmt,
