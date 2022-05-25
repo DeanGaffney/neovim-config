@@ -59,6 +59,8 @@ require("packer").startup(function(use)
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	-- Additional textobjects for treesitter
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	-- Comment.nvim
 	use({
