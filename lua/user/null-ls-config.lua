@@ -40,7 +40,6 @@ require("null-ls").setup({
 		-- completion.luasnip,
 		-- javascript
 		formatting.eslint_d,
-		-- diagnostics.eslint_d,
 		code_actions.eslint_d,
 		-- python
 		diagnostics.flake8,
@@ -49,18 +48,18 @@ require("null-ls").setup({
 		code_actions.shellcheck,
 		diagnostics.shellcheck,
 		formatting.shfmt,
-		-- -- spelling
-		-- diagnostics.codespell,
-		-- formatting.codespell,
-		-- -- docker
+		-- writing
+		code_actions.proselint,
+		diagnostics.proselint,
+		-- spelling
+		diagnostics.codespell,
+		formatting.codespell,
+		-- docker
 		diagnostics.hadolint,
 		-- -- yaml
 		-- diagnostics.yamllint,
 		-- -- refactoring
 		-- code_actions.refactoring,
-		-- -- markdown
-		-- diagnostics.markdownlint,
-		-- formatting.markdownlint
 	},
 	on_attach = on_attach,
 })

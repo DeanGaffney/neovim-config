@@ -6,3 +6,6 @@ brew install hadolint
 npm install -g dockerfile-language-server-nodejs
 brew install shellcheck
 brew install shfmt
+pip install proselint
+pip install codespell
+npm i -g yaml-language-server

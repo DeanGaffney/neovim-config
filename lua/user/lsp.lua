@@ -39,11 +39,7 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
-
--- automcomplete pairs (brackets etc..)
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
 cmp.setup({
 	snippet = {
@@ -130,3 +126,66 @@ for _, lsp in pairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+-- lua lsp config
+require("lspconfig").sumneko_lua.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = runtime_path,
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
+
+require("lspconfig").yamlls.setup({
+	on_attach = on_attach,
+	capabilities,
+	settings = {
+		yaml = {
+			format = {
+				enable = true,
+			},
+			hover = true,
+			completion = true,
+			-- cloudformation tags
+			customTags = {
+				"!fn",
+				"!And",
+				"!If",
+				"!Not",
+				"!Equals",
+				"!Or",
+				"!FindInMap sequence",
+				"!Base64",
+				"!Cidr",
+				"!Ref",
+				"!Ref Scalar",
+				"!Sub",
+				"!GetAtt",
+				"!GetAZs",
+				"!ImportValue",
+				"!Select",
+				"!Split",
+				"!Join sequence",
+			},
+		},
+	},
+})
