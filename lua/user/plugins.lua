@@ -62,6 +62,12 @@ require("packer").startup(function(use)
 	-- Additional textobjects for treesitter
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 
+	-- Status line
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+
 	-- Comment.nvim
 	use({
 		"numToStr/Comment.nvim",
