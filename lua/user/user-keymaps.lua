@@ -2,6 +2,10 @@
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 
+-- Insert line above/below without entering insert mode
+vim.api.nvim_set_keymap("n", "oo", "o<Esc>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "OO", "O<Esc>", { noremap = true, silent = true })
+
 -- Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
