@@ -61,6 +61,7 @@ require("packer").startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	-- Additional textobjects for treesitter
 	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("RRethy/nvim-treesitter-textsubjects")
 
 	-- Status line
 	use({
