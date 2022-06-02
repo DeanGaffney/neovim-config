@@ -82,6 +82,7 @@ require("packer").startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		tag = "release",
 	})
+	use("tpope/vim-fugitive")
 
 	-- File Explorer
 	use({
