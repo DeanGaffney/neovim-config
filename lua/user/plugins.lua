@@ -57,6 +57,9 @@ require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jiangmiao/auto-pairs")
 
+	-- Testing
+	use("vim-test/vim-test")
+
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	-- Additional textobjects for treesitter

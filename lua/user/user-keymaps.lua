@@ -21,10 +21,17 @@ vim.api.nvim_set_keymap("n", "<Leader>gb", ":Telescope git_branches<CR>", { nore
 vim.api.nvim_set_keymap("n", "<Leader>gs", ":Telescope git_status<CR>", { noremap = true, silent = true })
 
 -- Quickfix list
-vim.api.nvim_set_keymap("n", "q]", ":cnext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "q[", ":cprev<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[q", ":cprev<CR>", { noremap = true, silent = true })
 
 -- nvim-tree
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>r", ":NvimTreeRefresh<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>n", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+
+-- Testing
+vim.api.nvim_set_keymap("n", "<Leader>tn", ":TestNearest<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>tf", ":TestFile<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>ts", ":TestSuite<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>tl", ":TestLast<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>tv", ":TestVisit<CR>", { noremap = true, silent = true })
