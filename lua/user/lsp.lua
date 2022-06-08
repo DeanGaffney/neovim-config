@@ -179,7 +179,11 @@ vim.diagnostic.config({
 vim.o.updatetime = 250
 vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
 
--- lua lsp config
+-- lua setup
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
 require("lspconfig").sumneko_lua.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -189,7 +193,7 @@ require("lspconfig").sumneko_lua.setup({
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = "LuaJIT",
         -- Setup your lua path
-        path = "/usr/local/bin/lua",
+        path = runtime_path,
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global

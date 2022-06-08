@@ -1,5 +1,4 @@
 local null_ls = require("null-ls")
-local cfn_lint_source = require("user.cfn-lint")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
@@ -63,7 +62,7 @@ require("null-ls").setup({
 		-- -- refactoring
 		-- code_actions.refactoring,
 		-- cloudformation
-		cfn_lint_source,
+		diagnostics.cfn_lint,
 	},
 	on_attach = on_attach,
 })
