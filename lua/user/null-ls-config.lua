@@ -35,6 +35,7 @@ local on_attach = function(client, bufnr)
 end
 
 require("null-ls").setup({
+	debug = true,
 	sources = {
 		-- lua
 		formatting.stylua,
