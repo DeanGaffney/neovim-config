@@ -1,11 +1,16 @@
 #!/bin/bash
 
 npm i -g eslint_d
-cargo install stylua
-brew install hadolint
 npm install -g dockerfile-language-server-nodejs
+npm i -g yaml-language-server
+
+cargo install stylua
+
+brew install hadolint
 brew install shellcheck
 brew install shfmt
+brew install lua-language-server
+
 pip install proselint
 pip install codespell
-npm i -g yaml-language-server
+pip install cfn-lint
