@@ -18,7 +18,10 @@ require("packer").startup(function(use)
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+		config = function()
+			require("telescope").load_extension("lazygit")
+		end,
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 

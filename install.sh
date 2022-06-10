@@ -10,6 +10,7 @@ brew install hadolint
 brew install shellcheck
 brew install shfmt
 brew install lua-language-server
+brew install lazygit
 
 pip install proselint
 pip install codespell

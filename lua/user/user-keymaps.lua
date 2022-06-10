@@ -35,3 +35,6 @@ vim.api.nvim_set_keymap("n", "<Leader>tf", ":TestFile<CR>", { noremap = true, si
 vim.api.nvim_set_keymap("n", "<Leader>ts", ":TestSuite<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>tl", ":TestLast<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>tv", ":TestVisit<CR>", { noremap = true, silent = true })
+
+-- LazyGit
+vim.api.nvim_set_keymap("n", "<Leader>gg", ":LazyGit<CR>", { noremap = true, silent = true })
