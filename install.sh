@@ -11,6 +11,7 @@ brew install shellcheck
 brew install shfmt
 brew install lua-language-server
 brew install lazygit
+brew install git-delta
 
 pip install proselint
 pip install codespell
