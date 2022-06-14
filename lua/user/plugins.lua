@@ -57,8 +57,7 @@ require("packer").startup(function(use)
 	use("hrsh7th/vim-vsnip")
 
 	-- Formatting, Diagnostics, Code Actions
-	-- use("jose-elias-alvarez/null-ls.nvim")
-	use("~/workspace/null-ls.nvim")
+	use("jose-elias-alvarez/null-ls.nvim")
 	use("jiangmiao/auto-pairs")
 
 	-- Testing
