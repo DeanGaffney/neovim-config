@@ -42,10 +42,10 @@ local on_attach = function(client, bufnr)
 
   if client.server_capabilities.documentHighlightProvider then
     vim.cmd([[
-    hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-    hi! LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-  ]] )
+      hi LspReferenceRead cterm=bold ctermbg=237 guibg=#45403d
+      hi LspReferenceText cterm=bold ctermbg=237 guibg=#45403d
+      hi LspReferenceWrite cterm=bold ctermbg=237 guibg=#45403d
+    ]])
     vim.api.nvim_create_augroup("lsp_document_highlight", {
       clear = false,
     })
