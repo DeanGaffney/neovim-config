@@ -14,6 +14,7 @@ brew install lazygit
 brew install git-delta
 brew install golangci-lint
 brew upgrade golangci-lint
+brew install gopls
 
 pip install proselint
 pip install codespell
