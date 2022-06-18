@@ -63,6 +63,10 @@ require("null-ls").setup({
 		-- code_actions.refactoring,
 		-- cloudformation
 		diagnostics.cfn_lint,
+		--  golang
+		formatting.gofmt,
+		formatting.goimports,
+		diagnostics.golangci_lint,
 	},
 	on_attach = on_attach,
 })
