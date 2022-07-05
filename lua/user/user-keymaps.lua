@@ -11,8 +11,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Telescope files
-vim.api.nvim_set_keymap("n", "<Leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>ff", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>fg", ":Telescope live_grep hidden=true<CR>", { noremap = true, silent = true })
 
 -- Telescope git
 vim.api.nvim_set_keymap("n", "<Leader>gf", ":Telescope git_files<CR>", { noremap = true, silent = true })
