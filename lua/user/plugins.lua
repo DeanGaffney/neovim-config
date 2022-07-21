@@ -56,6 +56,9 @@ require("packer").startup(function(use)
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/vim-vsnip")
 
+	-- Snippets
+	use("rafamadriz/friendly-snippets")
+
 	-- Formatting, Diagnostics, Code Actions
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- use("~/workspace/null-ls.nvim")
