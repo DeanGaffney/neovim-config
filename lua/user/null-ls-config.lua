@@ -54,7 +54,6 @@ require("null-ls").setup({
 		diagnostics.proselint,
 		-- spelling
 		diagnostics.codespell,
-		formatting.codespell,
 		-- docker
 		diagnostics.hadolint,
 		-- -- yaml
