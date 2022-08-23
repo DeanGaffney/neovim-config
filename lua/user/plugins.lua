@@ -102,6 +102,7 @@ require("packer").startup(function(use)
 		},
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
+
 	-- Themes
 	use({ "ellisonleao/gruvbox.nvim" })
 
@@ -130,6 +131,8 @@ require("packer").startup(function(use)
 			})
 		end,
 	})
+
+	use({ "vimwiki/vimwiki" })
 
 	if packer_bootstrap then
 		require("packer").sync()
