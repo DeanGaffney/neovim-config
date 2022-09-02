@@ -134,6 +134,8 @@ require("packer").startup(function(use)
 
 	use({ "vimwiki/vimwiki" })
 
+	use({ "ThePrimeagen/harpoon" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

@@ -23,6 +23,9 @@ vim.api.nvim_set_keymap("n", "<Leader>gc", ":Telescope git_commits<CR>", { norem
 vim.api.nvim_set_keymap("n", "<Leader>gb", ":Telescope git_branches<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>gs", ":Telescope git_status<CR>", { noremap = true, silent = true })
 
+-- Telescope general
+vim.api.nvim_set_keymap("n", "?", ":Telescope keymaps<CR>", { noremap = true, silent = true })
+
 -- Quickfix list
 vim.api.nvim_set_keymap("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "[q", ":cprev<CR>", { noremap = true, silent = true })
@@ -53,3 +56,41 @@ vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent 
 vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>xc", "<cmd>TroubleClose<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+
+-- Harpoon
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>m",
+	":lua require('harpoon.mark').add_file()<CR>",
+	{ silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>h",
+	":lua require('harpoon.ui').toggle_quick_menu()<CR>",
+	{ silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>1",
+	":lua require('harpoon.ui').nav_file(1)<CR>",
+	{ silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>2",
+	":lua require('harpoon.ui').nav_file(2)<CR>",
+	{ silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>3",
+	":lua require('harpoon.ui').nav_file(3)<CR>",
+	{ silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>4",
+	":lua require('harpoon.ui').nav_file(4)<CR>",
+	{ silent = true, noremap = true }
+)
