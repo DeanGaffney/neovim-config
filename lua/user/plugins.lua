@@ -28,21 +28,6 @@ require("packer").startup(function(use)
 	-- LSP
 	use({
 		"williamboman/nvim-lsp-installer",
-		{
-			"neovim/nvim-lspconfig",
-			config = function()
-				require("nvim-lsp-installer").setup({
-					automatic_installation = false,
-					ui = {
-						icons = {
-							server_installed = "✓",
-							server_pending = "➜",
-							server_uninstalled = "✗",
-						},
-					},
-				})
-			end,
-		},
 	})
 
 	-- Autocompletion

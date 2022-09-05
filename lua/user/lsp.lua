@@ -1,3 +1,15 @@
+-- Must be called before setting up servers
+require("nvim-lsp-installer").setup({
+	automatic_installation = false,
+	ui = {
+		icons = {
+			server_installed = "✓",
+			server_pending = "➜",
+			server_uninstalled = "✗",
+		},
+	},
+})
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- Diagnostic keymaps
