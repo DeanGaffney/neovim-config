@@ -28,6 +28,7 @@ require("packer").startup(function(use)
 	-- LSP
 	use({
 		"williamboman/nvim-lsp-installer",
+		{ "neovim/nvim-lspconfig" },
 	})
 
 	-- Autocompletion
@@ -78,6 +79,7 @@ require("packer").startup(function(use)
 		tag = "release",
 	})
 	use("tpope/vim-fugitive")
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- File Explorer
 	use({
