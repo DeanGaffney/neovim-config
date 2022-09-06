@@ -15,10 +15,13 @@ end
 require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
+	-- Lots of plugins are dependent on this
+	use({ "nvim-lua/plenary.nvim" })
+
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+		requires = { { "kdheepak/lazygit.nvim" } },
 		config = function()
 			require("telescope").load_extension("lazygit")
 		end,
@@ -79,7 +82,7 @@ require("packer").startup(function(use)
 		tag = "release",
 	})
 	use("tpope/vim-fugitive")
-	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+	use({ "sindrets/diffview.nvim" })
 
 	-- File Explorer
 	use({

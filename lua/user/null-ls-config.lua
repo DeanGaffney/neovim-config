@@ -2,18 +2,15 @@ local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
-local completion = null_ls.builtins.completion
 
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
-		filter = function(clients)
+		filter = function(client)
 			-- filter out clients that you don't want to use
-			return vim.tbl_filter(function(client)
-				return client.name ~= "tsserver" or "jsonls"
-			end, clients)
+			return client.name ~= "tsserver" or "jsonls"
 		end,
 		bufnr = bufnr,
 	})
