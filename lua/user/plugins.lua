@@ -62,6 +62,9 @@ require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("RRethy/nvim-treesitter-textsubjects")
 
+	-- Icons for plugsin
+	use("kyazdani42/nvim-web-devicons")
+
 	-- Status line
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -122,8 +125,10 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- Note taking
 	use({ "vimwiki/vimwiki" })
 
+	-- Frequent file navigation
 	use({ "ThePrimeagen/harpoon" })
 
 	if packer_bootstrap then
