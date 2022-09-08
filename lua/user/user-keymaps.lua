@@ -42,9 +42,6 @@ vim.api.nvim_set_keymap("n", "<Leader>ts", ":TestSuite<CR>", { noremap = true, s
 vim.api.nvim_set_keymap("n", "<Leader>tl", ":TestLast<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>tv", ":TestVisit<CR>", { noremap = true, silent = true })
 
--- LazyGit
-vim.api.nvim_set_keymap("n", "<Leader>gg", ":LazyGit<CR>", { noremap = true, silent = true })
-
 -- Neogen
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
 
@@ -59,38 +56,38 @@ vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent =
 
 -- Harpoon
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>m",
-	":lua require('harpoon.mark').add_file()<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>m",
+  ":lua require('harpoon.mark').add_file()<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>h",
-	":lua require('harpoon.ui').toggle_quick_menu()<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>h",
+  ":lua require('harpoon.ui').toggle_quick_menu()<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>1",
-	":lua require('harpoon.ui').nav_file(1)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>1",
+  ":lua require('harpoon.ui').nav_file(1)<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>2",
-	":lua require('harpoon.ui').nav_file(2)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>2",
+  ":lua require('harpoon.ui').nav_file(2)<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>3",
-	":lua require('harpoon.ui').nav_file(3)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>3",
+  ":lua require('harpoon.ui').nav_file(3)<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>4",
-	":lua require('harpoon.ui').nav_file(4)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>4",
+  ":lua require('harpoon.ui').nav_file(4)<CR>",
+  { silent = true, noremap = true }
 )
