@@ -235,7 +235,7 @@ require("lspconfig").yamlls.setup({
 			completion = true,
 			-- cloudformation tags
 			customTags = {
-				"!fn",
+				"!Fn",
 				"!And",
 				"!If",
 				"!Not",
