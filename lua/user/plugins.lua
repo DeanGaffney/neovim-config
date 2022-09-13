@@ -79,6 +79,14 @@ require("packer").startup(function(use)
 		tag = "release",
 	})
 	use({ "sindrets/diffview.nvim" })
+	use({
+		"ldelossa/gh.nvim",
+		requires = { { "ldelossa/litee.nvim" } },
+		config = function()
+			require("litee.lib").setup()
+			require("litee.gh").setup()
+		end,
+	})
 
 	-- File Explorer
 	use({
