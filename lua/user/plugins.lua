@@ -78,7 +78,22 @@ require("packer").startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		tag = "release",
 	})
+
+	-- Diff view for merge conflicts and diffs before committing
 	use({ "sindrets/diffview.nvim" })
+
+	-- pull requests
+	use({
+		"pwntester/octo.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"kyazdani42/nvim-web-devicons",
+		},
+		config = function()
+			require("octo").setup()
+		end,
+	})
 
 	-- File Explorer
 	use({
