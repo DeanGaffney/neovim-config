@@ -36,9 +36,7 @@ require("null-ls").setup({
 		-- lua
 		formatting.stylua,
 		-- json
-		formatting.json_tool.with({
-			extra_args = { "--indent", "2" },
-		}),
+		formatting.jq,
 		-- completion.luasnip,
 		-- javascript
 		formatting.eslint_d,
