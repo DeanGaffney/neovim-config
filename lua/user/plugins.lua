@@ -92,6 +92,7 @@ require("packer").startup(function(use)
 
 	-- Themes
 	use({ "ellisonleao/gruvbox.nvim" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- Doc Comments
 	use({
