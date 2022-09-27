@@ -21,3 +21,7 @@ vim.api.nvim_set_option("cmdheight", 1)
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
 vim.api.nvim_set_option("updatetime", 20)
+
+-- Having longer timeoutlen (default is 1000 ms = 1 s) leads to noticeable
+-- delays when using key mappings
+vim.api.nvim_set_option("timeoutlen", 500)

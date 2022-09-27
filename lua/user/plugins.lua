@@ -55,6 +55,7 @@ require("packer").startup(function(use)
 	-- Additional textobjects for treesitter
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("RRethy/nvim-treesitter-textsubjects")
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- Icons for plugsin
 	use("kyazdani42/nvim-web-devicons")
@@ -109,15 +110,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"kylechui/nvim-surround",
-		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
-	})
-
 	-- Note taking
 	use({ "vimwiki/vimwiki" })
 
@@ -126,6 +118,9 @@ require("packer").startup(function(use)
 
 	-- Terminal
 	use({ "numToStr/FTerm.nvim" })
+
+	--Mini.nvim (collection of useful utilities)
+	use({ "echasnovski/mini.nvim", branch = "stable" })
 
 	if packer_bootstrap then
 		require("packer").sync()
