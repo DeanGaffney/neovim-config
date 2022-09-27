@@ -15,6 +15,7 @@ brew install git-delta
 brew install golangci-lint
 brew upgrade golangci-lint
 brew install gopls
+brew install jq
 
 pip install proselint
 pip install codespell
