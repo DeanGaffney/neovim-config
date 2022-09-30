@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ ! -d "./neovim" ]; then
+	# if neovim does not exist clone it and install it
+	git clone git@github.com:neovim/neovim.git
+	bash ./install-neovim-head.sh
+fi
 
 npm i -g eslint_d
 npm install -g dockerfile-language-server-nodejs
