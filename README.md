@@ -12,7 +12,3 @@ bash ./install.sh
 :PackerSync
 ```
 
-# TODOs
-- Configure lspsaga.nvim
-- Learn how to use treesitter shortcuts for moving around
-- Learn how to use lsp shortcuts
