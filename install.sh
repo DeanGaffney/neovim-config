@@ -15,8 +15,6 @@ brew install hadolint
 brew install shellcheck
 brew install shfmt
 brew install lua-language-server
-brew install lazygit
-brew install git-delta
 brew install golangci-lint
 brew upgrade golangci-lint
 brew install gopls
