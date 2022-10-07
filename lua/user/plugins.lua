@@ -123,6 +123,14 @@ require("packer").startup(function(use)
 	--Mini.nvim (collection of useful utilities)
 	use({ "echasnovski/mini.nvim", branch = "stable" })
 
+	--Improves startup time
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient")
+		end,
+	})
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
