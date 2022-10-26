@@ -251,7 +251,7 @@ require("lspconfig").yamlls.setup({
 				"!GetAZs",
 				"!ImportValue",
 				"!Select",
-				"!Split",
+				"!Split sequence",
 				"!Join sequence",
 			},
 		},
