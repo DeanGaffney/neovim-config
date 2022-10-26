@@ -80,6 +80,7 @@ require("packer").startup(function(use)
 		tag = "release",
 	})
 	use({ "sindrets/diffview.nvim" })
+	use("tpope/vim-fugitive")
 
 	-- File Explorer
 	use({
