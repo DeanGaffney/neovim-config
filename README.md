@@ -11,4 +11,3 @@ bash ./install.sh
 ```
 :PackerSync
 ```
-

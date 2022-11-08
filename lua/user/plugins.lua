@@ -1,4 +1,4 @@
--- automatically install packer if it is not installed
+-- automatically install packer if it is not installedp
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -113,7 +113,12 @@ require("packer").startup(function(use)
 	})
 
 	-- Note taking
-	use({ "vimwiki/vimwiki" })
+	use({
+		"vimwiki/vimwiki",
+		config = function()
+			vim.g.vimwiki_global_ext = 0
+		end,
+	})
 
 	-- Frequent file navigation
 	use({ "ThePrimeagen/harpoon" })
