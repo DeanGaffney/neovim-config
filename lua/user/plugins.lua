@@ -137,6 +137,8 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	use({ "mzlogin/vim-markdown-toc" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
