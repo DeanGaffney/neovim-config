@@ -25,3 +25,7 @@ vim.api.nvim_set_option("updatetime", 20)
 -- Having longer timeoutlen (default is 1000 ms = 1 s) leads to noticeable
 -- delays when using key mappings
 vim.api.nvim_set_option("timeoutlen", 500)
+
+vim.api.nvim_set_option("spell", true)
+vim.api.nvim_set_option("spelloptions", "noplainbuffer")
+vim.api.nvim_set_option("spelloptions", "camel")
