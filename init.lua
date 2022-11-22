@@ -1,5 +1,6 @@
 require("user.user-keymaps")
 require("user.user-settings")
+require("user.user-commands")
 require("user.plugins")
 require("user.telescope-settings")
 require("user.lsp")
