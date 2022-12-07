@@ -5,9 +5,9 @@ if [ ! -d "./neovim" ]; then
 	bash ./install-neovim-head.sh
 fi
 
-npm i -g eslint_d
-npm install -g dockerfile-language-server-nodejs
-npm i -g yaml-language-server
+npm i --location=global eslint_d
+npm i --location=global dockerfile-language-server-nodejs
+npm i --location=global yaml-language-server
 
 cargo install stylua
 
