@@ -1,6 +1,5 @@
 -- Must be called before setting up servers
-require("nvim-lsp-installer").setup({
-	automatic_installation = false,
+require("mason").setup({
 	ui = {
 		icons = {
 			server_installed = "✓",
@@ -8,6 +7,13 @@ require("nvim-lsp-installer").setup({
 			server_uninstalled = "✗",
 		},
 	},
+})
+
+local servers = { "dockerls", "bashls", "jsonls", "eslint", "tsserver", "pyright", "gopls", "sumneko_lua", "yamlls" }
+
+require("mason-lspconfig").setup({
+	automatic_installation = true,
+	ensure_installed = servers,
 })
 
 -- Mappings.
@@ -97,9 +103,6 @@ cmp.setup({
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	window = {
@@ -135,9 +138,6 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "vsnip" }, -- For vsnip users.
-		-- { name = 'luasnip' }, -- For luasnip users.
-		-- { name = 'ultisnips' }, -- For ultisnips users.
-		-- { name = 'snippy' }, -- For snippy users.
 	}, {
 		{ name = "buffer" },
 		{ name = "nvim_lsp_signature_help" },
@@ -170,7 +170,6 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "dockerls", "bashls", "jsonls", "eslint", "tsserver", "pyright" }
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
 		on_attach = on_attach,
@@ -214,6 +213,7 @@ require("lspconfig").sumneko_lua.setup({
 			workspace = {
 				-- Make the server aware of Neovim runtime files
 				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
 			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {

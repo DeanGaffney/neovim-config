@@ -23,9 +23,16 @@ require("packer").startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- LSP
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
+use(  { "neovim/nvim-lspconfig" } )
+
+	-- Lsp status
 	use({
-		"williamboman/nvim-lsp-installer",
-		{ "neovim/nvim-lspconfig" },
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
 	})
 
 	-- Autocompletion
@@ -44,7 +51,7 @@ require("packer").startup(function(use)
 
 	-- Formatting, Diagnostics, Code Actions
 	use("jose-elias-alvarez/null-ls.nvim")
-	-- use("~/workspace/null-ls.nvim")
+
 	use("jiangmiao/auto-pairs")
 
 	-- Testing
@@ -126,8 +133,8 @@ require("packer").startup(function(use)
 	-- Terminal
 	use({ "numToStr/FTerm.nvim" })
 
-	--Mini.nvim (collection of useful utilities)
-	use({ "echasnovski/mini.nvim", branch = "stable" })
+	-- Surround utility
+	use({ "tpope/vim-surround" })
 
 	--Improves startup time
 	use({
