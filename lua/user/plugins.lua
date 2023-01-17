@@ -25,7 +25,7 @@ require("packer").startup(function(use)
 	-- LSP
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-use(  { "neovim/nvim-lspconfig" } )
+	use({ "neovim/nvim-lspconfig" })
 
 	-- Lsp status
 	use({
@@ -145,6 +145,23 @@ use(  { "neovim/nvim-lspconfig" } )
 	})
 
 	use({ "mzlogin/vim-markdown-toc" })
+
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({
+				window = {
+					backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+					-- height and width can be:
+					-- * an absolute number of cells when > 1
+					-- * a percentage of the width / height of the editor when <= 1
+					-- * a function that returns the width or the height
+					width = 1, -- width of the Zen window
+					height = 1, -- height of the Zen window
+				},
+			})
+		end,
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
