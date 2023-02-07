@@ -9,7 +9,18 @@ require("mason").setup({
 	},
 })
 
-local servers = { "dockerls", "bashls", "jsonls", "eslint", "tsserver", "pyright", "gopls", "sumneko_lua", "yamlls" }
+local servers = {
+	"dockerls",
+	"bashls",
+	"jsonls",
+	"eslint",
+	"tsserver",
+	"pyright",
+	"gopls",
+	"sumneko_lua",
+	"yamlls",
+	"rust_analyzer",
+}
 
 require("mason-lspconfig").setup({
 	automatic_installation = true,
