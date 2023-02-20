@@ -27,6 +27,9 @@ require("packer").startup(function(use)
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "neovim/nvim-lspconfig" })
 
+	-- LSP - Java
+	use({ "mfussenegger/nvim-jdtls" })
+
 	-- Lsp status
 	use({
 		"j-hui/fidget.nvim",
@@ -88,6 +91,17 @@ require("packer").startup(function(use)
 	})
 	use({ "sindrets/diffview.nvim" })
 	use("tpope/vim-fugitive")
+	use({
+		"pwntester/octo.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"kyazdani42/nvim-web-devicons",
+		},
+		config = function()
+			require("octo").setup()
+		end,
+	})
 
 	-- File Explorer
 	use({
