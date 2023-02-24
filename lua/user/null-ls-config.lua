@@ -47,7 +47,9 @@ require("null-ls").setup({
 		-- shell
 		code_actions.shellcheck,
 		diagnostics.shellcheck,
-		formatting.shfmt,
+		formatting.shfmt.with({
+			extra_args = { "-i", "2" },
+		}),
 		-- writing
 		code_actions.proselint,
 		diagnostics.proselint,
