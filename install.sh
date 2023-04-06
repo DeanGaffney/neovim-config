@@ -2,7 +2,7 @@
 #
 if [ ! -d "./neovim" ]; then
   # if neovim does not exist clone it and install it
-  git clone git@github.com:neovim/neovim.git
+  git clone https://github.com/neovim/neovim.git
   bash ./install-neovim-head.sh
 fi
 
