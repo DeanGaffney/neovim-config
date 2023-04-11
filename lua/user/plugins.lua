@@ -1,186 +1,149 @@
--- automatically install packer if it is not installedp
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
+-- automatically install lazy.nvim if it is not installed
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 
-require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
+vim.opt.rtp:prepend(
+  lazypath)
 
-	-- Lots of plugins are dependent on this
-	use({ "nvim-lua/plenary.nvim" })
+local plugins = {
+  -- Lots of plugins are dependent on this
+  { "nvim-lua/plenary.nvim" },
 
-	-- Telescope
-	use({ "nvim-telescope/telescope.nvim" })
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  -- Telescope
+  { "nvim-telescope/telescope.nvim" },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
-	-- LSP
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "neovim/nvim-lspconfig" })
+  -- LSP
+  { "williamboman/mason.nvim",                  lazy = false,  build = ":MasonUpdate" },
+  { "williamboman/mason-lspconfig.nvim",        lazy = false },
+  { "neovim/nvim-lspconfig",                    lazy = false },
 
-	-- LSP - Java
-	use({ "mfussenegger/nvim-jdtls" })
+  -- LSP - Java
+  { "mfussenegger/nvim-jdtls" },
 
-	-- Lsp status
-	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-	})
+  -- Lsp status
+  {
+    "j-hui/fidget.nvim",
+  },
 
-	-- Autocompletion
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
-	use("hrsh7th/cmp-nvim-lsp-document-symbol")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-vsnip")
-	use("hrsh7th/vim-vsnip")
+  -- Autocompletion
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-nvim-lsp-signature-help" },
+  { "hrsh7th/cmp-nvim-lsp-document-symbol" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-cmdline" },
+  { "hrsh7th/cmp-vsnip" },
+  { "hrsh7th/vim-vsnip" },
 
-	-- Snippets
-	use("rafamadriz/friendly-snippets")
+  -- Snippets
+  { "rafamadriz/friendly-snippets" },
 
-	-- Formatting, Diagnostics, Code Actions
-	use("jose-elias-alvarez/null-ls.nvim")
+  -- Formatting, Diagnostics, Code Actions
+  { "jose-elias-alvarez/null-ls.nvim" },
 
-	use("jiangmiao/auto-pairs")
+  { "jiangmiao/auto-pairs" },
 
-	-- Testing
-	use("vim-test/vim-test")
+  -- Testing
+  { "vim-test/vim-test" },
 
-	-- Treesitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	-- Additional textobjects for treesitter
-	use("nvim-treesitter/nvim-treesitter-textobjects")
-	use("RRethy/nvim-treesitter-textsubjects")
-	use("nvim-treesitter/nvim-treesitter-context")
+  -- Treesitter
+  { "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
+  -- Additional textobjects for treesitter
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "RRethy/nvim-treesitter-textsubjects" },
+  { "nvim-treesitter/nvim-treesitter-context" },
 
-	-- Icons for plugsin
-	use("kyazdani42/nvim-web-devicons")
+  -- Icons for plugsin
+  { "kyazdani42/nvim-web-devicons",               lazy = true },
 
-	-- Status line
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+  -- Status line
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+  },
 
-	-- Comment.nvim
-	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	})
+  -- Comment.nvim
+  {
+    "numToStr/Comment.nvim",
+  },
 
-	-- Git
-	use({
-		"lewis6991/gitsigns.nvim",
-		tag = "release",
-	})
-	use({ "sindrets/diffview.nvim" })
-	use("tpope/vim-fugitive")
-	use({
-		"pwntester/octo.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"kyazdani42/nvim-web-devicons",
-		},
-		config = function()
-			require("octo").setup()
-		end,
-	})
+  -- Git
+  { "lewis6991/gitsigns.nvim", version = "release" },
+  { "sindrets/diffview.nvim" },
+  { "tpope/vim-fugitive" },
+  {
+    "pwntester/octo.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "kyazdani42/nvim-web-devicons",
+    },
+  },
 
-	-- File Explorer
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
-	})
+  -- File Explorer
+  {
+    "kyazdani42/nvim-tree.lua",
+    dependencies = {
+      "kyazdani42/nvim-web-devicons", -- optional, for file icon
+    },
+    version = "nightly",              -- optional, updated every week. (see issue #1193)
+  },
 
-	-- Themes
-	use({ "ellisonleao/gruvbox.nvim" })
-	use({ "catppuccin/nvim", as = "catppuccin" })
+  -- Themes
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+      vim.cmd([[colorscheme catppuccin]])
+    end
+  },
 
-	-- Doc Comments
-	use({
-		"danymat/neogen",
-		config = function()
-			require("neogen").setup({})
-		end,
-		requires = "nvim-treesitter/nvim-treesitter",
-	})
+  -- Doc Comments
+  {
+    "danymat/neogen",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
 
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({})
-		end,
-	})
+  {
+    "folke/trouble.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+  },
 
-	-- Note taking
-	use({
-		"vimwiki/vimwiki",
-		config = function()
-			vim.g.vimwiki_global_ext = 0
-		end,
-	})
+  -- Note taking
+  {
+    "vimwiki/vimwiki",
+    config = function()
+      vim.g.vimwiki_global_ext = 0
+    end,
+  },
 
-	-- Frequent file navigation
-	use({ "ThePrimeagen/harpoon" })
+  -- Frequent file navigation
+  { "ThePrimeagen/harpoon" },
 
-	-- Terminal
-	use({ "numToStr/FTerm.nvim" })
+  -- Terminal
+  { "numToStr/FTerm.nvim" },
 
-	-- Surround utility
-	use({ "tpope/vim-surround" })
+  -- Surround utility
+  { "tpope/vim-surround" },
 
-	--Improves startup time
-	use({
-		"lewis6991/impatient.nvim",
-		config = function()
-			require("impatient")
-		end,
-	})
+  { "mzlogin/vim-markdown-toc" },
 
-	use({ "mzlogin/vim-markdown-toc" })
+  -- TMUX
+  { "christoomey/vim-tmux-navigator" }
+}
 
-	use({
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup({
-				window = {
-					backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-					-- height and width can be:
-					-- * an absolute number of cells when > 1
-					-- * a percentage of the width / height of the editor when <= 1
-					-- * a function that returns the width or the height
-					width = 1, -- width of the Zen window
-					height = 1, -- height of the Zen window
-				},
-			})
-		end,
-	})
 
-	-- TMUX
-	use({ "christoomey/vim-tmux-navigator" })
-
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
+require("lazy").setup(plugins)
