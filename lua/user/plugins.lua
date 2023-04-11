@@ -11,8 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 
-vim.opt.rtp:prepend(
-  lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- Lots of plugins are dependent on this
@@ -79,7 +78,6 @@ local plugins = {
   },
 
   -- Git
-  { "lewis6991/gitsigns.nvim", version = "release" },
   { "sindrets/diffview.nvim" },
   { "tpope/vim-fugitive" },
   {
@@ -97,7 +95,7 @@ local plugins = {
     dependencies = {
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
-    version = "nightly",              -- optional, updated every week. (see issue #1193)
+    version = "nightly",           -- optional, updated every week. (see issue #1193)
   },
 
   -- Themes
@@ -108,7 +106,7 @@ local plugins = {
     config = function()
       vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
       vim.cmd([[colorscheme catppuccin]])
-    end
+    end,
   },
 
   -- Doc Comments
@@ -142,8 +140,7 @@ local plugins = {
   { "mzlogin/vim-markdown-toc" },
 
   -- TMUX
-  { "christoomey/vim-tmux-navigator" }
+  { "christoomey/vim-tmux-navigator" },
 }
-
 
 require("lazy").setup(plugins)
