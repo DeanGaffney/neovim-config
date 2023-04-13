@@ -6,7 +6,7 @@ local local_share_dir = home .. "/.local/share"
 local jdtls_dir = local_share_dir .. "/nvim/mason/packages/jdtls"
 local plugins_dir = jdtls_dir .. "/plugins"
 local eclipse_dir = local_share_dir .. "/eclipse"
-local java_install_dir = "/usr/local/opt"
+local java_install_dir = "/opt/homebrew/opt"
 
 -- File types that signify a Java project's root directory. This will be
 -- used by eclipse to determine what constitutes a workspace
@@ -181,10 +181,6 @@ local config = {
 						name = "JavaSE-17",
 						path = java_install_dir .. "/openjdk@17/libexec/openjdk.jdk/Contents/Home",
 						default = true,
-					},
-					{
-						name = "JavaSE-15",
-						path = java_install_dir .. "/openjdk@15/libexec/openjdk.jdk/Contents/Home",
 					},
 					{
 						name = "JavaSE-11",
