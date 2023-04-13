@@ -122,3 +122,19 @@ vim.api.nvim_set_keymap("n", "<leader>dvh", "<cmd>DiffviewFileHistory %<cr>", { 
 
 -- Zen mode
 vim.api.nvim_set_keymap("n", "<leader>zm", "<cmd>ZenMode<cr>", { silent = true, noremap = true })
+
+-- Note Taking
+vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>Telekasten panel<CR>", { silent = true, noremap = true })
+
+-- Most used functions
+vim.api.nvim_set_keymap("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>zd", "<cmd>Telekasten goto_today<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>zz", "<cmd>Telekasten follow_link<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>zn", "<cmd>Telekasten new_note<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>zc", "<cmd>Telekasten show_calendar<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>", { silent = true, noremap = true })
+
+-- Call insert link automatically when we start typing a link
+vim.api.nvim_set_keymap("i", "[[", "<cmd>Telekasten insert_link<CR>", { silent = true, noremap = true })
