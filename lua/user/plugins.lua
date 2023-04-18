@@ -132,7 +132,7 @@ local plugins = {
 	{
 		"renerocksai/telekasten.nvim",
 		opts = {
-			home = vim.fn.expand("~/workspace/notes"),
+			home = vim.fn.expand("~/notes"),
 		},
 		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
