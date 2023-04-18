@@ -129,14 +129,6 @@ local plugins = {
 		dependencies = { "kyazdani42/nvim-web-devicons" },
 	},
 
-	-- Note taking
-	{
-		"vimwiki/vimwiki",
-		config = function()
-			vim.g.vimwiki_global_ext = 0
-		end,
-	},
-
 	{
 		"renerocksai/telekasten.nvim",
 		opts = {
