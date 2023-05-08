@@ -1,5 +1,6 @@
--- Followed guide found here https://sookocheff.com/post/vim/neovim-java-ide/
+-- Followed guide fmund here https://sookocheff.com/post/vim/neovim-java-ide/
 local home = os.getenv("HOME")
+local lsp_attach = require("user.lsp-on-attach")
 local jdtls = require("jdtls")
 
 local local_share_dir = home .. "/.local/share"
@@ -52,69 +53,11 @@ local cmd = {
 	eclipse_workspace,
 }
 
--- Helper function for creating keymaps
-function nnoremap(rhs, lhs, bufopts, desc)
-	bufopts.desc = desc
-	vim.keymap.set("n", rhs, lhs, bufopts)
-end
-
--- The on_attach function is used to set key maps after the language server
--- attaches to the current buffer
-local on_attach = function(client, bufnr)
-	-- Regular Neovim LSP client keymappings
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	nnoremap("gD", vim.lsp.buf.declaration, bufopts, "Go to declaration")
-	nnoremap("gd", vim.lsp.buf.definition, bufopts, "Go to definition")
-	nnoremap("gi", vim.lsp.buf.implementation, bufopts, "Go to implementation")
-	nnoremap("K", vim.lsp.buf.hover, bufopts, "Hover text")
-	nnoremap("<C-k>", vim.lsp.buf.signature_help, bufopts, "Show signature")
-	nnoremap("<space>wa", vim.lsp.buf.add_workspace_folder, bufopts, "Add workspace folder")
-	nnoremap("<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts, "Remove workspace folder")
-	nnoremap("<space>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts, "List workspace folders")
-	nnoremap("<space>D", vim.lsp.buf.type_definition, bufopts, "Go to type definition")
-	nnoremap("<space>rn", vim.lsp.buf.rename, bufopts, "Rename")
-	nnoremap("<space>ca", vim.lsp.buf.code_action, bufopts, "Code actions")
-	vim.keymap.set(
-		"v",
-		"<space>ca",
-		"<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
-		{ noremap = true, silent = true, buffer = bufnr, desc = "Code actions" }
-	)
-	nnoremap("<space>f", function()
-		vim.lsp.buf.format({ async = true })
-	end, bufopts, "Format file")
-
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = "LspFormatting", buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = "LspFormatting",
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format({ async = true })
-			end,
-		})
-	end
-
-	-- Java extensions provided by jdtls
-	nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
-	nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
-	nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
-	vim.keymap.set(
-		"v",
-		"<space>em",
-		[[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
-		{ noremap = true, silent = true, buffer = bufnr, desc = "Extract method" }
-	)
-	require("jdtls.setup").add_commands()
-end
-
 local config = {
 	flags = {
 		debounce_text_changes = 80,
 	},
-	on_attach = on_attach, -- We pass our on_attach keybindings to the configuration map
+	on_attach = lsp_attach.java, -- We pass our on_attach keybindings to the configuration map
 	root_dir = root_dir, -- Set the root directory to our found root_marker
 	-- Here you can configure eclipse.jdt.ls specific settings
 	-- These are defined by the eclipse.jdt.ls project and will be passed to eclipse when starting.
@@ -125,9 +68,6 @@ local config = {
 			home = java_install_dir .. "/openjdk@17",
 			format = {
 				settings = {
-					-- Use Google Java style guidelines for formatting
-					-- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
-					-- and place it in the ~/.local/share/eclipse directory
 					url = eclipse_dir .. "/eclipse-java-google-style.xml",
 					profile = "GoogleStyle",
 				},
