@@ -11,6 +11,8 @@ require("null-ls").setup({
 		formatting.stylua,
 		-- json
 		formatting.jq,
+		-- java
+		formatting.google_java_format,
 		-- completion.luasnip,
 		-- javascript
 		formatting.eslint_d,
