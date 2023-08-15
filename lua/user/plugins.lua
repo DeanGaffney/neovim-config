@@ -18,7 +18,15 @@ local plugins = {
   { "nvim-lua/plenary.nvim" },
 
   -- Telescope
-  { "nvim-telescope/telescope.nvim" },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        wrap_results = true,
+        layout_strategy = "vertical"
+      }
+    }
+  },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   -- LSP
