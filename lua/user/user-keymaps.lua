@@ -10,6 +10,9 @@ vim.api.nvim_set_keymap("n", "OO", "O<Esc>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Copy in visual mode and paste without losing clipboard contents
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
 -- Telescope files
 vim.api.nvim_set_keymap("n", "<Leader>ff", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
