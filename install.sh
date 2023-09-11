@@ -6,25 +6,28 @@ if [ ! -d "./neovim" ]; then
   bash ./install-neovim-head.sh
 fi
 
-npm list eslint_d --location=global || npm i --location=global eslint_d
-npm list dockerfile-language-server-nodejs --location=global || npm i --location=global dockerfile-language-server-nodejs
+# npm packages
+npm i --location=global eslint_d
+npm i --location=global dockerfile-language-server-nodejs
 
-brew info ripgrep || brew install ripgrep
-brew info yaml-language-server || brew install yaml-language-server
-brew info stylua || brew info stylua
-brew info luarocks || brew info luarocks
-brew info hadolint || brew install hadolint
-brew info shellcheck || brew install shellcheck
-brew info shfmt || brew install shfmt
-brew info lua-language-server || brew install lua-language-server
-brew info golangci-lint || brew install golangci-lint
-brew info gopls || brew install gopls
-brew info jq || brew install jq
-brew info cfn-lint || brew install cfn-lint
-brew info flake8 || brew install flake8
-brew info black || brew install black
+# homebrew packages
+brew install ripgrep
+brew install yaml-language-server
+brew info stylua
+brew info luarocks
+brew install hadolint
+brew install shellcheck
+brew install shfmt
+brew install lua-language-server
+brew install golangci-lint
+brew install gopls
+brew install jq
+brew install cfn-lint
+brew install flake8
+brew install black
 
-pip list | grep codespell || pip install codespell
+# pip packages
+pip install codespell
 
 # java setup - https://sookocheff.com/post/vim/neovim-java-ide/
 ECLIPSE_DIR="$HOME/.local/share/eclipse"
