@@ -22,7 +22,7 @@ local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
 local eclipse_workspace = eclipse_dir .. "/" .. project_name
 
 local cmd = {
-	java_install_dir .. "/openjdk@17/bin/java",
+	"java",
 	"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 	"-Dosgi.bundles.defaultStartLevel=4",
 	"-Declipse.product=org.eclipse.jdt.ls.core.product",
