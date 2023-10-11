@@ -1,3 +1,6 @@
+local utils = require("user.utils")
+local home = os.getenv("HOME")
+
 -- General keymap settings
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
@@ -126,18 +129,47 @@ vim.api.nvim_set_keymap("n", "<leader>dvh", "<cmd>DiffviewFileHistory %<cr>", { 
 -- Zen mode
 vim.api.nvim_set_keymap("n", "<leader>zm", "<cmd>ZenMode<cr>", { silent = true, noremap = true })
 
--- Note Taking
-vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>Telekasten panel<CR>", { silent = true, noremap = true })
+-- Notes
+vim.api.nvim_set_keymap("n", "<leader>nd", "",
+  {
+    silent = true,
+    noremap = true,
+    callback = function()
+      local base_dir = home .. "/notes/work/genesys/daily"
+      local current_date = os.date('%Y-%m-%d')
+      local file_name = current_date .. '.md'
+      local full_path = vim.fs.joinpath(base_dir, file_name)
 
--- Most used functions
-vim.api.nvim_set_keymap("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>zd", "<cmd>Telekasten goto_today<CR>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>zz", "<cmd>Telekasten follow_link<CR>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>zn", "<cmd>Telekasten new_note<CR>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>zc", "<cmd>Telekasten show_calendar<CR>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>", { silent = true, noremap = true })
+      -- file already exists, just open it to be edited
+      if vim.fn.filereadable(full_path) == 1 then
+        vim.cmd('e ' .. full_path)
+        return
+      end
 
--- Call insert link automatically when we start typing a link
-vim.api.nvim_set_keymap("i", "[[", "<cmd>Telekasten insert_link<CR>", { silent = true, noremap = true })
+      -- if the daily notes file does not exist, create it and
+      -- place todays date as a header
+      local header = "# " .. current_date .. " Daily Notes"
+      utils.edit_markdown_file(full_path, { text = header })
+    end
+  })
+
+vim.api.nvim_set_keymap("n", "<leader>nm", "",
+  {
+    silent = true,
+    noremap = true,
+    callback = function()
+      utils.create_user_named_markdown_file(home .. "/notes/work/genesys/meetings")
+    end
+  })
+
+vim.api.nvim_set_keymap("n", "<leader>nt", "",
+  {
+    silent = true,
+    noremap = true,
+    callback = function()
+      utils.create_user_named_markdown_file(home .. "/notes/work/genesys/tasks")
+    end
+  })
+
+vim.api.nvim_set_keymap("n", "<leader>fwn", "<cmd>Telescope find_files search_dirs=~/notes/work<CR>",
+  { silent = true, noremap = true })

@@ -56,6 +56,8 @@ local plugins = {
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/cmp-vsnip" },
   { "hrsh7th/vim-vsnip" },
+  { "L3MON4D3/LuaSnip" },
+  { "saadparwaiz1/cmp_luasnip" },
 
   -- Snippets
   { "rafamadriz/friendly-snippets" },
@@ -95,12 +97,8 @@ local plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("indent_blankline").setup({
-        show_current_context = true,
-        show_current_context_start = true
-      })
-    end
+    main = "ibl",
+    opts = {}
   },
 
   -- Icons for plugsin
@@ -164,14 +162,6 @@ local plugins = {
   {
     "folke/trouble.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
-  },
-
-  {
-    "renerocksai/telekasten.nvim",
-    opts = {
-      home = vim.fn.expand("~/notes"),
-    },
-    dependencies = { "nvim-telescope/telescope.nvim" },
   },
 
   -- Frequent file navigation
