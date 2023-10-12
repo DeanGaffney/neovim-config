@@ -1,4 +1,4 @@
-local utils = require("user.utils")
+local notes = require("user.notes")
 local home = os.getenv("HOME")
 
 -- General keymap settings
@@ -135,21 +135,7 @@ vim.api.nvim_set_keymap("n", "<leader>nd", "",
     silent = true,
     noremap = true,
     callback = function()
-      local base_dir = home .. "/notes/work/genesys/daily"
-      local current_date = os.date('%Y-%m-%d')
-      local file_name = current_date .. '.md'
-      local full_path = vim.fs.joinpath(base_dir, file_name)
-
-      -- file already exists, just open it to be edited
-      if vim.fn.filereadable(full_path) == 1 then
-        vim.cmd('e ' .. full_path)
-        return
-      end
-
-      -- if the daily notes file does not exist, create it and
-      -- place todays date as a header
-      local header = "# " .. current_date .. " Daily Notes"
-      utils.edit_markdown_file(full_path, { text = header })
+      notes.create_daily_note(home .. "/notes/work/genesys/daily")
     end
   })
 
@@ -158,7 +144,7 @@ vim.api.nvim_set_keymap("n", "<leader>nm", "",
     silent = true,
     noremap = true,
     callback = function()
-      utils.create_user_named_markdown_file(home .. "/notes/work/genesys/meetings")
+      notes.create_user_named_markdown_file(home .. "/notes/work/genesys/meetings")
     end
   })
 
@@ -167,9 +153,9 @@ vim.api.nvim_set_keymap("n", "<leader>nt", "",
     silent = true,
     noremap = true,
     callback = function()
-      utils.create_user_named_markdown_file(home .. "/notes/work/genesys/tasks")
+      notes.create_user_named_markdown_file(home .. "/notes/work/genesys/tasks")
     end
   })
 
-vim.api.nvim_set_keymap("n", "<leader>fwn", "<cmd>Telescope find_files search_dirs=~/notes/work<CR>",
+vim.api.nvim_set_keymap("n", "<leader>fn", "<cmd>Telescope find_files search_dirs=~/notes/work<CR>",
   { silent = true, noremap = true })
