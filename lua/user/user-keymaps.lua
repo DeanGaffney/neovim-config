@@ -134,6 +134,7 @@ vim.api.nvim_set_keymap("n", "<leader>nd", "",
   {
     silent = true,
     noremap = true,
+    desc = "Create a notes file for daily notes",
     callback = function()
       notes.create_daily_note(home .. "/notes/work/genesys/daily")
     end
@@ -143,6 +144,7 @@ vim.api.nvim_set_keymap("n", "<leader>nm", "",
   {
     silent = true,
     noremap = true,
+    desc = "Create a notes file related to a specific meeting",
     callback = function()
       notes.create_user_named_markdown_file(home .. "/notes/work/genesys/meetings")
     end
@@ -152,10 +154,11 @@ vim.api.nvim_set_keymap("n", "<leader>nt", "",
   {
     silent = true,
     noremap = true,
+    desc = "Create a notes file related to a specific task",
     callback = function()
       notes.create_user_named_markdown_file(home .. "/notes/work/genesys/tasks")
     end
   })
 
 vim.api.nvim_set_keymap("n", "<leader>fn", "<cmd>Telescope find_files search_dirs=~/notes/work<CR>",
-  { silent = true, noremap = true })
+  { silent = true, noremap = true, desc = "Search notes folder" })
