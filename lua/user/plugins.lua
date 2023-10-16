@@ -132,14 +132,10 @@ local plugins = {
 
   -- File Explorer
   {
-    "kyazdani42/nvim-tree.lua",
-    dependencies = {
-      "kyazdani42/nvim-web-devicons", -- optional, for file icon
-    },
-    config = function()
-      require("nvim-tree").setup()
-    end,
-    version = "nightly", -- optional, updated every week. (see issue #1193)
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "kyazdani42/nvim-web-devicons" },
   },
 
   -- Themes
@@ -167,13 +163,13 @@ local plugins = {
   -- Frequent file navigation
   { "ThePrimeagen/harpoon" },
 
-  -- Terminal
-  { "numToStr/FTerm.nvim" },
-
   -- Surround utility
   { "tpope/vim-surround" },
 
+  -- Markdown
   { "mzlogin/vim-markdown-toc" },
+
+  { "preservim/vim-markdown" },
 
   -- TMUX
   { "christoomey/vim-tmux-navigator" },

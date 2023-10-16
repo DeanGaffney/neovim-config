@@ -43,11 +43,6 @@ vim.api.nvim_set_keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", { noremap
 vim.api.nvim_set_keymap("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "[q", ":cprev<CR>", { noremap = true, silent = true })
 
--- nvim-tree
-vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>r", ":NvimTreeRefresh<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>n", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-
 -- Testing
 vim.api.nvim_set_keymap("n", "<Leader>tn", ":TestNearest<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>tf", ":TestFile<CR>", { noremap = true, silent = true })
@@ -105,22 +100,6 @@ vim.api.nvim_set_keymap(
   { silent = true, noremap = true }
 )
 
--- FTerm
-vim.api.nvim_set_keymap("n", "<leader>ft", ':lua require("FTerm").toggle()<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap(
-  "t",
-  "<leader>ft",
-  '<C-\\><C-n>:lua require("FTerm").toggle()<CR>',
-  { silent = true, noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>fe", ':lua require("FTerm").exit()<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap(
-  "t",
-  "<leader>fe",
-  '<C-\\><C-n>:lua require("FTerm").exit()<CR>',
-  { silent = true, noremap = true }
-)
-
 -- Git
 vim.api.nvim_set_keymap("n", "<leader>dvo", "<cmd>DiffviewOpen<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>dvc", "<cmd>DiffviewClose<cr>", { silent = true, noremap = true })
@@ -128,6 +107,10 @@ vim.api.nvim_set_keymap("n", "<leader>dvh", "<cmd>DiffviewFileHistory %<cr>", { 
 
 -- Zen mode
 vim.api.nvim_set_keymap("n", "<leader>zm", "<cmd>ZenMode<cr>", { silent = true, noremap = true })
+
+-- Oil
+vim.api.nvim_set_keymap("n", "<leader>-", "<cmd>Oil<cr>",
+  { silent = true, noremap = true, desc = "Open parent directory" })
 
 -- Notes
 vim.api.nvim_set_keymap("n", "<leader>nd", "",
