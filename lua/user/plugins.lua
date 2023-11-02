@@ -169,8 +169,6 @@ local plugins = {
   -- Markdown
   { "mzlogin/vim-markdown-toc" },
 
-  { "preservim/vim-markdown" },
-
   -- TMUX
   { "christoomey/vim-tmux-navigator" },
 
