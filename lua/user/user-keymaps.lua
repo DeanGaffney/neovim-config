@@ -100,11 +100,6 @@ vim.api.nvim_set_keymap(
   { silent = true, noremap = true }
 )
 
--- Git
-vim.api.nvim_set_keymap("n", "<leader>dvo", "<cmd>DiffviewOpen<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dvc", "<cmd>DiffviewClose<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dvh", "<cmd>DiffviewFileHistory %<cr>", { silent = true, noremap = true })
-
 -- Zen mode
 vim.api.nvim_set_keymap("n", "<leader>zm", "<cmd>ZenMode<cr>", { silent = true, noremap = true })
 

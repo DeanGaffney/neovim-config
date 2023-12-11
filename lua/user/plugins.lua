@@ -119,7 +119,7 @@ local plugins = {
   },
 
   -- Git
-  { "sindrets/diffview.nvim" },
+  { 'akinsho/git-conflict.nvim',    version = "*", config = true },
   { "tpope/vim-fugitive" },
   {
     "pwntester/octo.nvim",
