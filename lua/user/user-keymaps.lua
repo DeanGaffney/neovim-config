@@ -138,5 +138,15 @@ vim.api.nvim_set_keymap("n", "<leader>nt", "",
     end
   })
 
+vim.api.nvim_set_keymap("n", "<leader>npn", "",
+  {
+    silent = true,
+    noremap = true,
+    desc = "Create a new personal note file",
+    callback = function()
+      notes.create_user_named_markdown_file(home .. "/notes/personal")
+    end
+  })
+
 vim.api.nvim_set_keymap("n", "<leader>fn", "<cmd>Telescope find_files search_dirs=~/notes/work<CR>",
   { silent = true, noremap = true, desc = "Search notes folder" })
