@@ -148,5 +148,5 @@ vim.api.nvim_set_keymap("n", "<leader>npn", "",
     end
   })
 
-vim.api.nvim_set_keymap("n", "<leader>fn", "<cmd>Telescope find_files search_dirs=~/notes/work<CR>",
+vim.api.nvim_set_keymap("n", "<leader>fn", "<cmd>Telescope find_files search_dirs=~/notes<CR>",
   { silent = true, noremap = true, desc = "Search notes folder" })
