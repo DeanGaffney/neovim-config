@@ -21,6 +21,7 @@ local servers = {
   "yamlls",
   "rust_analyzer",
   "jdtls",
+  "ltex",
 }
 
 require("mason-lspconfig").setup({

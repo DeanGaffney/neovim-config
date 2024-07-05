@@ -7,7 +7,7 @@ Configuration for neovim
 bash ./install.sh
 ```
 
-- Inside of neovim run the following:
+- Inside neovim run the following:
 ```
 :Lazy
 ```
@@ -24,7 +24,7 @@ bash ./install-neovim-head.sh
 
 ## Rolling Back
 - It's possible when updating neovim that some issues arise.
-- To rollback to your previous version of neovim run the following:
+- To roll back to your previous version of neovim run the following:
 ```bash
 bash ./rollback-neovim.sh
 ```
