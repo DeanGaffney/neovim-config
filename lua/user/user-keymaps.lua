@@ -5,6 +5,12 @@ local home = os.getenv("HOME")
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 
+-- Pane Navigation
+vim.api.nvim_set_keymap("n", "gk", "<C-W><C-K>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gj", "<C-W><C-J>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gl", "<C-W><C-L>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gh", "<C-W><C-H>", { noremap = true, silent = true })
+
 -- Insert line above/below without entering insert mode
 vim.api.nvim_set_keymap("n", "oo", "o<Esc>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "OO", "O<Esc>", { noremap = true, silent = true })
