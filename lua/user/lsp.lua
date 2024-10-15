@@ -9,6 +9,8 @@ require("mason").setup({
 	},
 })
 
+require("java").setup()
+
 local servers = {
 	"dockerls",
 	"bashls",

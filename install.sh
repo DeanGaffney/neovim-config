@@ -28,12 +28,3 @@ brew install black
 
 # pip packages
 pip install codespell
-
-# java setup - https://sookocheff.com/post/vim/neovim-java-ide/
-ECLIPSE_DIR="$HOME/.local/share/eclipse"
-
-if [ ! -d "$ECLIPSE_DIR" ]; then
-  mkdir -p "$ECLIPSE_DIR"
-fi
-
-curl -o "$ECLIPSE_DIR/eclipse-java-google-style.xml" https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
