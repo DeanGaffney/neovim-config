@@ -8,7 +8,7 @@ local lsp_format = function(bufnr)
   vim.lsp.buf.format({
     filter = function(_client)
       -- filter out clients that you don't want to use
-      return _client.name ~= "tsserver" or "jsonls"
+      return _client.name ~= "ts_ls" or "jsonls"
     end,
     bufnr = bufnr,
   })
