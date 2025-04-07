@@ -69,6 +69,18 @@ vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent
 vim.api.nvim_set_keymap("n", "<leader>xc", "<cmd>TroubleClose<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
 
+-- Diagnostics
+vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>vim.diagnostic.open_float<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>vim.diagnostic.setloclist<cr>", { silent = true, noremap = true })
+
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.goto_prev()
+end, { silent = true, noremap = true })
+
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.goto_next({ severity = nil, float = true, forward = true })
+end, { silent = true, noremap = true })
+
 -- Harpoon
 vim.api.nvim_set_keymap(
 	"n",
