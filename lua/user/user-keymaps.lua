@@ -22,29 +22,32 @@ vim.g.maplocalleader = " "
 -- Copy in visual mode and paste without losing clipboard contents
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- Telescope files
-vim.api.nvim_set_keymap("n", "<Leader>ff", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
+-- FZF-Lua files
+vim.api.nvim_set_keymap("n", "<Leader>ff", ":FzfLua files<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>fg", ":FzfLua grep_project<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
-	"n",
-	"<Leader>fa",
-	":Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-	{ noremap = true, silent = true }
+  "n",
+  "<Leader>fa",
+  ":FzfLua files show_hidden=true no_ignore=true<CR>",
+  { noremap = true, silent = true }
 )
 
--- Telescope lsp
-vim.api.nvim_set_keymap("n", "<Leader>lr", ":Telescope lsp_references<CR>", { noremap = true, silent = true })
+-- FZF-Lua lsp
+vim.api.nvim_set_keymap("n", "<Leader>lr", ":FzfLua lsp_references<CR>", { noremap = true, silent = true })
 
--- Telescope git
-vim.api.nvim_set_keymap("n", "<Leader>gf", ":Telescope git_files<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>gc", ":Telescope git_commits<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>gb", ":Telescope git_branches<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>gs", ":Telescope git_status<CR>", { noremap = true, silent = true })
+-- Remove the global workspace symbols mapping since we're handling it in lsp-on-attach.lua
+-- vim.api.nvim_set_keymap("n", "<Leader>so", ":FzfLua lsp_live_workspace_symbols<CR>", { noremap = true, silent = true })
+
+-- FZF-Lua git
+vim.api.nvim_set_keymap("n", "<Leader>gf", ":FzfLua git_files<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>gc", ":FzfLua git_commits<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>gb", ":FzfLua git_branches<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>gs", ":FzfLua git_status<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>lg", ":LazyGit<CR>", { noremap = true, silent = true })
 
--- Telescope general
-vim.api.nvim_set_keymap("n", "<Leader>km", ":Telescope keymaps<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true })
+-- FZF-Lua general
+vim.api.nvim_set_keymap("n", "<Leader>km", ":FzfLua keymaps<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>fh", ":FzfLua help_tags<CR>", { noremap = true, silent = true })
 
 -- Quickfix list
 vim.api.nvim_set_keymap("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
@@ -74,49 +77,49 @@ vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>vim.diagnostic.open_float<cr>", 
 vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>vim.diagnostic.setloclist<cr>", { silent = true, noremap = true })
 
 vim.keymap.set("n", "[d", function()
-	vim.diagnostic.goto_prev()
+  vim.diagnostic.goto_prev()
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "]d", function()
-	vim.diagnostic.goto_next({ severity = nil, float = true, forward = true })
+  vim.diagnostic.goto_next({ severity = nil, float = true, forward = true })
 end, { silent = true, noremap = true })
 
 -- Harpoon
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>m",
-	":lua require('harpoon.mark').add_file()<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>m",
+  ":lua require('harpoon.mark').add_file()<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>h",
-	":lua require('harpoon.ui').toggle_quick_menu()<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>h",
+  ":lua require('harpoon.ui').toggle_quick_menu()<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>1",
-	":lua require('harpoon.ui').nav_file(1)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>1",
+  ":lua require('harpoon.ui').nav_file(1)<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>2",
-	":lua require('harpoon.ui').nav_file(2)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>2",
+  ":lua require('harpoon.ui').nav_file(2)<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>3",
-	":lua require('harpoon.ui').nav_file(3)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>3",
+  ":lua require('harpoon.ui').nav_file(3)<CR>",
+  { silent = true, noremap = true }
 )
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>4",
-	":lua require('harpoon.ui').nav_file(4)<CR>",
-	{ silent = true, noremap = true }
+  "n",
+  "<leader>4",
+  ":lua require('harpoon.ui').nav_file(4)<CR>",
+  { silent = true, noremap = true }
 )
 
 -- Zen mode
@@ -124,52 +127,52 @@ vim.api.nvim_set_keymap("n", "<leader>zm", "<cmd>ZenMode<cr>", { silent = true, 
 
 -- Oil
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>-",
-	"<cmd>Oil<cr>",
-	{ silent = true, noremap = true, desc = "Open parent directory" }
+  "n",
+  "<leader>-",
+  "<cmd>Oil<cr>",
+  { silent = true, noremap = true, desc = "Open parent directory" }
 )
 
 -- Notes
 vim.api.nvim_set_keymap("n", "<leader>nd", "", {
-	silent = true,
-	noremap = true,
-	desc = "Create a notes file for daily notes",
-	callback = function()
-		notes.create_daily_note(home .. "/notes/work/genesys/daily")
-	end,
+  silent = true,
+  noremap = true,
+  desc = "Create a notes file for daily notes",
+  callback = function()
+    notes.create_daily_note(home .. "/notes/work/genesys/daily")
+  end,
 })
 
 vim.api.nvim_set_keymap("n", "<leader>nm", "", {
-	silent = true,
-	noremap = true,
-	desc = "Create a notes file related to a specific meeting",
-	callback = function()
-		notes.create_user_named_markdown_file(home .. "/notes/work/genesys/meetings")
-	end,
+  silent = true,
+  noremap = true,
+  desc = "Create a notes file related to a specific meeting",
+  callback = function()
+    notes.create_user_named_markdown_file(home .. "/notes/work/genesys/meetings")
+  end,
 })
 
 vim.api.nvim_set_keymap("n", "<leader>nt", "", {
-	silent = true,
-	noremap = true,
-	desc = "Create a notes file related to a specific task",
-	callback = function()
-		notes.create_user_named_markdown_file(home .. "/notes/work/genesys/tasks")
-	end,
+  silent = true,
+  noremap = true,
+  desc = "Create a notes file related to a specific task",
+  callback = function()
+    notes.create_user_named_markdown_file(home .. "/notes/work/genesys/tasks")
+  end,
 })
 
 vim.api.nvim_set_keymap("n", "<leader>npn", "", {
-	silent = true,
-	noremap = true,
-	desc = "Create a new personal note file",
-	callback = function()
-		notes.create_user_named_markdown_file(home .. "/notes/personal")
-	end,
+  silent = true,
+  noremap = true,
+  desc = "Create a new personal note file",
+  callback = function()
+    notes.create_user_named_markdown_file(home .. "/notes/personal")
+  end,
 })
 
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>fn",
-	"<cmd>Telescope find_files search_dirs=~/notes<CR>",
-	{ silent = true, noremap = true, desc = "Search notes folder" }
+  "n",
+  "<leader>fn",
+  "<cmd>FzfLua files cwd=~/notes<CR>",
+  { silent = true, noremap = true, desc = "Search notes folder" }
 )
