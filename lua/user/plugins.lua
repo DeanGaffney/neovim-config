@@ -23,13 +23,27 @@ local plugins = {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+      local actions = require("fzf-lua.actions")
       require("fzf-lua").setup({
-        "telescope",
         files = {
           file_ignore_patterns = {
             "node_modules",
             ".git",
             "venv",
+          },
+        },
+        keymap = {
+          fzf = {
+            ["ctrl-q"] = "select-all+accept",
+          },
+        },
+        actions = {
+          files = {
+            ["default"] = actions.file_edit_or_qf,
+            ["ctrl-x"] = actions.file_split,
+          },
+          buffers = {
+            ["default"] = actions.file_edit_or_qf,
           },
         },
       })
