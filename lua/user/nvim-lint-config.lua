@@ -12,8 +12,7 @@ require("lint").linters_by_ft = {
   -- docker
   dockerfile = { "hadolint" },
   -- yaml
-  -- cloudformation
-  yaml = { "yamllint", "cfn_lint" },
+  yaml = { "yamllint" },
   -- shell scripts
   sh = { "shellcheck" },
   bash = { "shellcheck" },
