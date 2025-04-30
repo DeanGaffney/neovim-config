@@ -1,6 +1,3 @@
-local lsp_attach = require("user.lsp-on-attach")
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 require("conform").setup({
   formatters_by_ft = {
     -- lua
@@ -21,8 +18,10 @@ require("conform").setup({
     bash = { "shfmt" },
     -- golang
     go = { "gofmt", "goimports" },
+    -- yaml
+    yaml = { "yamlfmt" },
   },
-  
+
   -- Set up format-on-save
   format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable
@@ -31,7 +30,7 @@ require("conform").setup({
     end
     return { timeout_ms = 500, lsp_fallback = true }
   end,
-  
+
   -- Customize formatters
   formatters = {
     shfmt = {
