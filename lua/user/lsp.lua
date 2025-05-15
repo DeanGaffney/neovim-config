@@ -9,29 +9,22 @@ require("mason").setup({
 	},
 })
 
-require("java").setup()
-
+-- Remove jdtls from the servers list as it will be handled by nvim-java
 local servers = {
 	"dockerls",
 	"bashls",
 	"jsonls",
 	"eslint",
-	"ts_ls",
 	"pyright",
 	"gopls",
 	"lua_ls",
 	"yamlls",
 	"rust_analyzer",
-	"jdtls",
 	"ltex",
 }
 
-require("mason-lspconfig").setup({
-	automatic_installation = true,
-	ensure_installed = servers,
-})
-
-local on_attach = require("user.lsp-on-attach").default
+-- TypeScript is handled separately due to naming inconsistencies
+local ts_server = "ts_ls" -- The new name in nvim-lspconfig
 
 -- Setup nvim-cmp.
 vim.api.nvim_set_option("completeopt", "menu,menuone,noselect")
@@ -126,14 +119,37 @@ cmp.setup.cmdline(":", {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
+local on_attach = require("user.lsp-on-attach").default
+
+-- Configure mason-lspconfig
+require("mason-lspconfig").setup({
+	ensure_installed = servers, -- Only include servers that mason-lspconfig recognizes
+	automatic_installation = true,
+	automatic_enable = false,
+})
+
+-- Manually set up each server to avoid the automatic_enable feature
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
 end
+
+-- Set up TypeScript server separately
+require("lspconfig")[ts_server].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+-- Set up Java separately after all other LSP servers
+vim.defer_fn(function()
+    -- Only try to set up Java if the plugin is available
+    local ok, java = pcall(require, "java")
+    if ok then
+        java.setup()
+    end
+end, 100)
 
 -- diagnostic settings
 vim.diagnostic.config({

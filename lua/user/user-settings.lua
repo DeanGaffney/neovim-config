@@ -1,31 +1,75 @@
--- nvim settings
-vim.api.nvim_set_option("expandtab", true)
-vim.api.nvim_set_option("smartindent", true)
-vim.api.nvim_set_option("tabstop", 2)
-vim.api.nvim_set_option("shiftwidth", 2)
-vim.api.nvim_set_option("softtabstop", 2)
-vim.api.nvim_win_set_option(0, "number", true)
-vim.api.nvim_win_set_option(0, "relativenumber", true)
-vim.api.nvim_set_option("clipboard", "unnamedplus")
-vim.api.nvim_set_option("swapfile", false)
-vim.api.nvim_set_option("backup", false)
-vim.api.nvim_set_option("undodir", os.getenv("HOME") .. "/.vim/undodir")
-vim.api.nvim_set_option("undofile", true)
-vim.api.nvim_set_option("hlsearch", false)
-vim.api.nvim_set_option("incsearch", true)
-vim.api.nvim_set_option("termguicolors", true)
-vim.api.nvim_set_option("scrolloff", 15)
-vim.api.nvim_set_option("signcolumn", "yes")
-vim.api.nvim_set_option("cmdheight", 1)
+-- General settings
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.showmode = false
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+vim.opt.wrap = false
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+vim.opt.completeopt = "menuone,noselect"
+vim.opt.pumheight = 10
+vim.opt.conceallevel = 0
+vim.opt.fileencoding = "utf-8"
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 3
+vim.opt.showtabline = 2
+vim.opt.list = true
+vim.opt.listchars = { tab = "→ ", trail = "·", extends = "»", precedes = "«", nbsp = "␣" }
 
--- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
--- delays and poor user experience.
-vim.api.nvim_set_option("updatetime", 20)
+-- Set font for GUI clients (like Neovide)
+vim.opt.guifont = "UbuntuMono Nerd Font Mono:h14"
 
--- Having longer timeoutlen (default is 1000 ms = 1 s) leads to noticeable
--- delays when using key mappings
-vim.api.nvim_set_option("timeoutlen", 500)
+-- Set leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.api.nvim_set_option("spell", true)
-vim.api.nvim_set_option("spelloptions", "noplainbuffer")
-vim.api.nvim_set_option("spelloptions", "camel")
+-- Disable some built-in plugins
+vim.g.loaded_gzip = 1
+vim.g.loaded_zip = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_getscript = 1
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_vimball = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_logiPat = 1
+vim.g.loaded_rrhelper = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+vim.g.loaded_netrwFileHandlers = 1
+
+-- Disable Ruby and Perl providers
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+
+-- Set colorscheme options
+vim.g.tokyonight_style = "storm"
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }

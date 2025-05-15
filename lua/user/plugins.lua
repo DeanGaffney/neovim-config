@@ -58,9 +58,23 @@ local plugins = {
   -- LSP - Java
   {
     "nvim-java/nvim-java",
-    config = false,
     dependencies = {
+      "nvim-java/lua-async-await",
+      "nvim-java/nvim-java-core",
+      "nvim-java/nvim-java-test",
+      "nvim-java/nvim-java-dap",
+      "MunifTanjim/nui.nvim",
       "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      {
+        "williamboman/mason.nvim",
+        opts = {
+          registries = {
+            "github:nvim-java/mason-registry",
+            "github:mason-org/mason-registry",
+          },
+        },
+      },
     },
   },
 
@@ -190,13 +204,35 @@ local plugins = {
 
   -- Themes
   {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "storm", -- Options: storm, moon, night, day
+        transparent = false,
+        terminal_colors = true,
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = {},
+          variables = {},
+        },
+        sidebars = { "qf", "help", "terminal", "packer" },
+        day_brightness = 0.3,
+        hide_inactive_statusline = false,
+        dim_inactive = false,
+        lualine_bold = true,
+      })
+      vim.cmd([[colorscheme tokyonight]])
+    end,
+  },
+  
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    config = function()
-      vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-      vim.cmd([[colorscheme catppuccin]])
-    end,
+    enabled = false,
   },
 
   -- Doc Comments
