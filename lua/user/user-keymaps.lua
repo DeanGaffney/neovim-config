@@ -1,5 +1,6 @@
-local notes = require("user.notes")
 local home = os.getenv("HOME")
+
+local obsidian_directory = home .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 
 -- General keymap settings
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
@@ -134,45 +135,11 @@ vim.api.nvim_set_keymap(
 )
 
 -- Notes
-vim.api.nvim_set_keymap("n", "<leader>nd", "", {
-  silent = true,
-  noremap = true,
-  desc = "Create a notes file for daily notes",
-  callback = function()
-    notes.create_daily_note(home .. "/notes/work/genesys/daily")
-  end,
-})
-
-vim.api.nvim_set_keymap("n", "<leader>nm", "", {
-  silent = true,
-  noremap = true,
-  desc = "Create a notes file related to a specific meeting",
-  callback = function()
-    notes.create_user_named_markdown_file(home .. "/notes/work/genesys/meetings")
-  end,
-})
-
-vim.api.nvim_set_keymap("n", "<leader>nt", "", {
-  silent = true,
-  noremap = true,
-  desc = "Create a notes file related to a specific task",
-  callback = function()
-    notes.create_user_named_markdown_file(home .. "/notes/work/genesys/tasks")
-  end,
-})
-
-vim.api.nvim_set_keymap("n", "<leader>npn", "", {
-  silent = true,
-  noremap = true,
-  desc = "Create a new personal note file",
-  callback = function()
-    notes.create_user_named_markdown_file(home .. "/notes/personal")
-  end,
-})
+vim.api.nvim_set_keymap("n", "<leader>nd", "<cmd>ObsidianToday<cr>", { silent = true, noremap = true })
 
 vim.api.nvim_set_keymap(
   "n",
   "<leader>fn",
-  "<cmd>FzfLua files cwd=~/notes<CR>",
+  "<cmd>ObsidianSearch<CR>",
   { silent = true, noremap = true, desc = "Search notes folder" }
 )
