@@ -55,29 +55,6 @@ local plugins = {
   { "williamboman/mason-lspconfig.nvim", lazy = false },
   { "neovim/nvim-lspconfig",             lazy = false },
 
-  -- LSP - Java
-  {
-    "nvim-java/nvim-java",
-    dependencies = {
-      "nvim-java/lua-async-await",
-      "nvim-java/nvim-java-core",
-      "nvim-java/nvim-java-test",
-      "nvim-java/nvim-java-dap",
-      "MunifTanjim/nui.nvim",
-      "neovim/nvim-lspconfig",
-      "mfussenegger/nvim-dap",
-      {
-        "williamboman/mason.nvim",
-        opts = {
-          registries = {
-            "github:nvim-java/mason-registry",
-            "github:mason-org/mason-registry",
-          },
-        },
-      },
-    },
-  },
-
   -- Lsp status
   {
     "j-hui/fidget.nvim",
@@ -251,9 +228,6 @@ local plugins = {
 
   -- Surround utility
   { "tpope/vim-surround" },
-
-  -- Markdown
-  { "mzlogin/vim-markdown-toc" },
 
   -- TMUX
   { "christoomey/vim-tmux-navigator" },
