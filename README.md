@@ -65,7 +65,7 @@ This will:
 
 - LSP integration with Mason for easy language server management
 - Treesitter for improved syntax highlighting
-- Fuzzy finding with fzf-lua
+- Fuzzy finding with Telescope
 - Git integration
 - Autocompletion
 - Formatting and linting

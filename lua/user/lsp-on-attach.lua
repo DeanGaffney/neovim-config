@@ -57,12 +57,7 @@ local default_on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
   -- Use document symbols by default
-  vim.keymap.set("n", "<leader>so", require("fzf-lua").lsp_document_symbols, opts)
-
-  -- For Java files, override with workspace symbols
-  if client.name == "jdtls" then
-    vim.keymap.set("n", "<leader>so", require("fzf-lua").lsp_live_workspace_symbols, opts)
-  end
+  vim.keymap.set("n", "<leader>so", require("telescope.builtin").lsp_document_symbols, opts)
 
   vim.keymap.set(
     "v",

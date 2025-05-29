@@ -23,32 +23,28 @@ vim.g.maplocalleader = " "
 -- Copy in visual mode and paste without losing clipboard contents
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- FZF-Lua files
-vim.api.nvim_set_keymap("n", "<Leader>ff", ":FzfLua files<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>fg", ":FzfLua grep_project<CR>", { noremap = true, silent = true })
+-- Telescope files
+vim.api.nvim_set_keymap("n", "<Leader>ff", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
   "n",
   "<Leader>fa",
-  ":FzfLua files show_hidden=true no_ignore=true<CR>",
+  ":Telescope find_files follow=true no_ignore=true hidden=true<CR>",
   { noremap = true, silent = true }
 )
 
--- FZF-Lua lsp
-vim.api.nvim_set_keymap("n", "<Leader>lr", ":FzfLua lsp_references<CR>", { noremap = true, silent = true })
+-- Telescope LSP
+vim.api.nvim_set_keymap("n", "<Leader>lr", ":Telescope lsp_references<CR>", { noremap = true, silent = true })
 
--- Remove the global workspace symbols mapping since we're handling it in lsp-on-attach.lua
--- vim.api.nvim_set_keymap("n", "<Leader>so", ":FzfLua lsp_live_workspace_symbols<CR>", { noremap = true, silent = true })
+-- Telescope git
+vim.api.nvim_set_keymap("n", "<Leader>gf", ":Telescope git_files<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>gc", ":Telescope git_commits<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>gb", ":Telescope git_branches<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>gs", ":Telescope git_status<CR>", { noremap = true, silent = true })
 
--- FZF-Lua git
-vim.api.nvim_set_keymap("n", "<Leader>gf", ":FzfLua git_files<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>gc", ":FzfLua git_commits<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>gb", ":FzfLua git_branches<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>gs", ":FzfLua git_status<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>lg", ":LazyGit<CR>", { noremap = true, silent = true })
-
--- FZF-Lua general
-vim.api.nvim_set_keymap("n", "<Leader>km", ":FzfLua keymaps<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>fh", ":FzfLua help_tags<CR>", { noremap = true, silent = true })
+-- Telescope general
+vim.api.nvim_set_keymap("n", "<Leader>km", ":Telescope keymaps<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true })
 
 -- Quickfix list
 vim.api.nvim_set_keymap("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
