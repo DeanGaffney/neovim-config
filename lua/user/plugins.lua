@@ -166,30 +166,14 @@ local plugins = {
 
   -- Themes
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    "loctvl842/monokai-pro.nvim",
     config = function()
-      require("tokyonight").setup({
-        style = "storm", -- Options: storm, moon, night, day
-        transparent = false,
-        terminal_colors = true,
-        styles = {
-          comments = { italic = true },
-          keywords = { italic = true },
-          functions = {},
-          variables = {},
-        },
-        sidebars = { "qf", "help", "terminal", "packer" },
-        day_brightness = 0.3,
-        hide_inactive_statusline = false,
-        dim_inactive = false,
-        lualine_bold = true,
+      require("monokai-pro").setup({
+        filter = "classic",
       })
-      vim.cmd([[colorscheme tokyonight]])
+    vim.cmd([[colorscheme monokai-pro]])
     end,
   },
-
   {
     "catppuccin/nvim",
     name = "catppuccin",

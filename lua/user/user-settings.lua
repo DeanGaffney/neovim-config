@@ -68,8 +68,3 @@ vim.g.loaded_netrwFileHandlers = 1
 -- Disable Ruby and Perl providers
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
-
--- Set colorscheme options
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
