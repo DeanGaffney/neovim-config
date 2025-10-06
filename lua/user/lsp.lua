@@ -1,6 +1,3 @@
--- must be setup before other lsps
-require("java").setup()
-
 -- Must be called before setting up servers
 require("mason").setup({
 	ui = {

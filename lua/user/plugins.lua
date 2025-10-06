@@ -39,7 +39,6 @@ local plugins = {
 	{ "williamboman/mason.nvim", lazy = false, build = ":MasonUpdate" },
 	{ "williamboman/mason-lspconfig.nvim", lazy = false },
 	{ "neovim/nvim-lspconfig", lazy = false },
-	{ "nvim-java/nvim-java" },
 
 	-- Lsp status
 	{
