@@ -41,11 +41,22 @@ end
 local default_on_attach = function(client, bufnr)
   local opts = get_opts(bufnr)
 
+  -- Setup lsp_signature
+  require("lsp_signature").on_attach({
+    bind = true,
+    handler_opts = {
+      border = "rounded"
+    },
+    hint_enable = true,
+    trigger_on_newline = true,
+  }, bufnr)
+
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "<C-k>", function() require("lsp_signature").toggle_float_win() end, { silent = true, noremap = true, desc = "toggle signature", buffer = bufnr })
+  vim.keymap.set("n", "<Leader>k", vim.lsp.buf.signature_help, { silent = true, noremap = true, desc = "basic signature help", buffer = bufnr })
   vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
   vim.keymap.set("n", "<leader>wl", function()

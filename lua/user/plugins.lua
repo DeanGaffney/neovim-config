@@ -201,6 +201,20 @@ local plugins = {
 	-- Zen Mode
 	{ "folke/zen-mode.nvim" },
 
+	-- Enhanced LSP signature help
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		opts = {},
+		config = function(_, opts) require'lsp_signature'.setup(opts) end
+	},
+
+	-- Find and Replace
+	{
+		"nvim-pack/nvim-spectre",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+
 	-- plugins.lua
 	{
 		name = "amazonq",
