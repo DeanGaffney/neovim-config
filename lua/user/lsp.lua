@@ -121,7 +121,7 @@ local on_attach = require("user.lsp-on-attach").default
 require("mason-lspconfig").setup({
 	ensure_installed = servers, -- Only include servers that mason-lspconfig recognizes
 	automatic_installation = true,
-	automatic_enable = false,
+	automatic_enable = true,
 })
 
 -- Manually set up each server to avoid the automatic_enable feature
