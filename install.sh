@@ -33,12 +33,11 @@ brew install hadolint
 brew install shellcheck
 brew install shfmt
 brew install lua-language-server
+brew install bash-language-server
 brew install golangci-lint
 brew install gopls
 brew install jq
 brew install cfn-lint
-brew install flake8
-brew install black
 
 # pip packages
 echo -e "${YELLOW}Installing pip packages...${NC}"

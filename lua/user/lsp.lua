@@ -14,7 +14,7 @@ local servers = {
 	"bashls",
 	"jsonls",
 	"eslint",
-	"pyright",
+	"ruff",
 	"gopls",
 	"lua_ls",
 	"yamlls",
